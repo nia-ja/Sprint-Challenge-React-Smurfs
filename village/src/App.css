@@ -5,3 +5,61 @@
 .App {
   text-align: center;
 }
+
+/* NavBar styling */
+.navigation {
+  padding: 30px;
+  margin-bottom: 30px;
+  background: #224de3;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navigation h1 {
+  font-size: 36px;
+}
+.navigation .links {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.link {
+  border: none;
+}
+.link a {
+  padding: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: white;
+  color: #224de3;
+  font-weight: bold;
+  font-size: 16px;
+}
+.link .activeNavButton {
+  background: #e0e0e0;
+  color: #ff0000;
+}
+
+/* Smurfs Styling */
+.Smurfs {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.Smurf {
+  width: 25%;
+  padding: 20px;
+  background: #e3d900;
+  color: rgb(54, 54, 54);
+}
+.Smurf h3 {
+  margin-bottom: 20px;
+}
+.Smurf .bold {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+

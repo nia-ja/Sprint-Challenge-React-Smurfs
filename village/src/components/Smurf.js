@@ -4,7 +4,7 @@ const Smurf = props => {
   return (
     <div className="Smurf">
       <h3>{props.name}</h3>
-      <strong>{props.height} tall</strong>
+      <p className='bold'>{props.height} tall</p>
       <p>{props.age} smurf years old</p>
     </div>
   );
