@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   return (
     <div>
       <nav className="navigation">
-        <h1>Smurf Village</h1>
+        <Link to="/"><h1>Smurf Village</h1></Link>
         <div className='links'>
           <button className='link'>
             <NavLink exact to="/" activeClassName='activeNavButton'>Smurfs List</NavLink>

@@ -13,6 +13,7 @@ class App extends Component {
     super(props);
     this.state = {
       smurfs: [],
+      postSuccessMessage: ''
     };
   }
   componentDidMount() {
@@ -27,7 +28,7 @@ class App extends Component {
     axios
       .post("http://localhost:3333/smurfs", smurf)
       .then(response => {
-        this.setState({ smurfs: response.data });
+        this.setState({ smurfs: response.data, postSuccessMessage: response.statusText });
       })
       .catch(err => console.log(err));
   }
@@ -46,7 +47,7 @@ class App extends Component {
       <div className="App">
         <Navigation />
         <Route exact path='/' render={(props) => <Smurfs {...props} smurfs={this.state.smurfs} />} />
-        <Route path='/smurf-form' render={(props) => <SmurfForm {...props} addSmurf={this.addSmurf} /> } />
+        <Route path='/smurf-form' render={(props) => <SmurfForm {...props} addSmurf={this.addSmurf} successMessage={this.state.postSuccessMessage} /> } />
         <Route exact path="/smurfs/:id" render={(props) => <SmurfPage {...props} deleteSmurf={this.deleteSmurf} />} />
       </div>
     );
