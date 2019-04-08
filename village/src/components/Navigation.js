@@ -5,7 +5,8 @@ const Navigation = () => {
   return (
     <div>
       <nav className="navigation">
-        <Link to="/"><h1>Smurf Village</h1></Link>
+        
+        <Link to="/"><h1>Smurf<br />Village</h1></Link>
         <div className='links'>
           <button className='link'>
             <NavLink exact to="/" activeClassName='activeNavButton'>Smurfs List</NavLink>

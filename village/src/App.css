@@ -6,22 +6,20 @@
   text-align: center;
   position: relative;
 }
-.App img {
+.App .smurfette {
   width: 100vw;
   z-index: -10;
   position: absolute;
   right: 0;
-  top: 101px;
-  opacity: 0.5;
+  top: 140px;
+  opacity: 0.1;
 }
-
 /* NavBar styling */
 .navigation {
   z-index: 10;
-  padding: 30px;
+  padding: 20px 4%;
   margin-bottom: 50px;
-  background: #224de3;
-  color: white;
+  background: #0000ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,10 +28,13 @@
   text-decoration: none;
   color: white;
   cursor: pointer;
+  align-self: flex-end;
 }
-.navigation h1 {
-  font-size: 36px;
+.navigation a h1 {
+  font-size: 40px;
   cursor: pointer;
+  text-transform: uppercase;
+  text-align: left;
 }
 .navigation .links {
   width: 30%;
@@ -77,7 +78,7 @@
   color: rgb(54, 54, 54);
   background: #e3d900;
   width: 35%; 
-  height: 200px;
+  height: 270px;
   margin: 20px;
   cursor: pointer;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
@@ -88,7 +89,6 @@
 }
 .Smurf {
   height: 100%;
-  padding: 0 30px;
   background: #e3d900;
   cursor: pointer;
   display: flex;
@@ -99,8 +99,12 @@
 .Smurf:hover {
   cursor: pointer;
 }
+.village {
+  width: 90%;
+  margin-bottom: 15px;
+}
 .Smurf h3 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 .Smurf p {
@@ -114,14 +118,15 @@
 
 .smurf-page-wrapper {
   width: 60%;
-  height: 300px;
+  height: 450px;
   margin: 0 auto;
   background: #e3d900;
-  padding-bottom: 20px;
+  padding: 20px 0;
 }
 .smurf-page-wrapper .Smurf {
-  height: 70%;
+  height: 80%;
   cursor: auto;
+  margin-bottom: 30px;
 }
 .controls {
   display: flex;
@@ -189,7 +194,6 @@ form .message {
   font-weight: bold;
   color: #ff0000;
 }
-
 form .btn {
   width: 25%;
   margin: 0 auto;
