@@ -4,10 +4,20 @@
 }
 .App {
   text-align: center;
+  position: relative;
+}
+.App img {
+  width: 100vw;
+  z-index: -10;
+  position: absolute;
+  right: 0;
+  top: 101px;
+  opacity: 0.5;
 }
 
 /* NavBar styling */
 .navigation {
+  z-index: 10;
   padding: 30px;
   margin-bottom: 50px;
   background: #224de3;
@@ -19,9 +29,11 @@
 .navigation a {
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 .navigation h1 {
   font-size: 36px;
+  cursor: pointer;
 }
 .navigation .links {
   width: 30%;
@@ -30,6 +42,10 @@
 }
 .link {
   border: none;
+  cursor: pointer;
+}
+.link a:hover {
+  border: 1px solid darkblue;
 }
 .link a {
   padding: 20px;
@@ -39,6 +55,8 @@
   color: #224de3;
   font-weight: bold;
   font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
 }
 .link .activeNavButton {
   background: #e0e0e0;
@@ -52,30 +70,58 @@
   padding: 20px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .Smurfs a {
   text-decoration: none;
   color: rgb(54, 54, 54);
-  width: 25%; 
+  background: #e3d900;
+  width: 35%; 
+  height: 200px;
   margin: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+}
+.Smurfs a:hover {
+  border: 1px solid #224de3;
+  cursor: pointer;
 }
 .Smurf {
-  padding: 20px;
+  height: 100%;
+  padding: 0 30px;
   background: #e3d900;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Smurf:hover {
+  cursor: pointer;
 }
 .Smurf h3 {
   margin-bottom: 20px;
+  cursor: pointer;
+}
+.Smurf p {
+  cursor: pointer;
 }
 .Smurf .bold {
   font-weight: bold;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .smurf-page-wrapper {
   width: 60%;
+  height: 300px;
   margin: 0 auto;
   background: #e3d900;
   padding-bottom: 20px;
+}
+.smurf-page-wrapper .Smurf {
+  height: 70%;
+  cursor: auto;
 }
 .controls {
   display: flex;
@@ -84,7 +130,7 @@
 .controls a {
   width: 20%;
   background: white;
-
+  cursor: pointer;
 }
 
 .btn {
@@ -95,6 +141,7 @@
   padding: 10px 0;
   font-size: 14px;
   font-weight: bold;
+  cursor: pointer;
 }
 .btn:hover {
   background: rgb(240, 240, 240);

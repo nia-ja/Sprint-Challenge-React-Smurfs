@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Route } from 'react-router-dom';
 
 import './App.css';
+import Image from './img/app_background.jpg';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
 import Navigation from './components/Navigation';
@@ -56,6 +57,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <img src={Image} alt='Small mountain village' />
         <Navigation />
 
         <Route exact path='/' render={(props) => <Smurfs {...props} smurfs={this.state.smurfs} />} />
