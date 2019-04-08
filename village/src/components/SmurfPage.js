@@ -33,7 +33,10 @@ class SmurfPage extends Component {
         return (
             <div className="smurf-page-wrapper">
                <Smurf name={name}  height={height} age={age} />
-               <Link to="/"><button className='btn' onClick={this.deleteSmurf}>Delete</button></Link>
+               <div className='controls'>
+                    <Link to={`/smurfs/${this.state.smurf.id}/edit`}><button className='btn'>Edit</button></Link>
+                    <Link to="/"><button className='btn' onClick={this.deleteSmurf}>Delete</button></Link>
+               </div>
            </div>
        )
     }

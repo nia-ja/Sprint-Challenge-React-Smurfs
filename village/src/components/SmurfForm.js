@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -7,10 +8,33 @@ class SmurfForm extends Component {
       name: '',
       age: '',
       height: '',
-      responseMessage: ''
+      responseMessage: '',
+      id: '',
+      onSubmit: ''
     };
   }
-
+  componentDidMount() {
+    const id = Number(this.props.match.params.id);
+    this.fetchSmurf(id);
+    this.setState(() => ({ id: id }));
+  }
+  fetchSmurf = id => {
+    axios
+      .get(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        this.setState(() => ({ name: response.data.name, age: response.data.age, height: response.data.height }));
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+  onSubmit = event => {
+    if(this.props.action === 'edit') {
+      this.editSmurf(event); 
+    } else {
+      this.addSmurf(event);
+    }
+  }
   addSmurf = event => {
     event.preventDefault();
     const newSmurf = {
@@ -24,6 +48,18 @@ class SmurfForm extends Component {
       age: '',
       height: ''
     });
+  }
+  editSmurf = event => {
+    event.preventDefault();
+      const myId = Number(this.state.id);
+      const updatedSmurf = {
+          name: this.state.name,
+          age: Number(this.state.age),
+          height: this.state.height
+      }
+      this.props.editSmurf(myId, updatedSmurf);
+      // this.setState({responseMessage: 'Done!'});
+      // setTimeout(() => this.setState({responseMessage: ''}), 3000);
   }
   componentWillReceiveProps() {
     this.setState({
@@ -39,8 +75,8 @@ class SmurfForm extends Component {
   render() {
     return (
       <div className="SmurfForm">
-        <h3>Add Smurf</h3>
-        <form onSubmit={this.addSmurf}>
+        <h3>{this.props.headerText}</h3>
+        <form onSubmit={this.onSubmit}>
           <input
             onChange={this.handleInputChange}
             placeholder="name"
@@ -60,7 +96,7 @@ class SmurfForm extends Component {
             name="height"
           />
           <div className='message'>{this.state.responseMessage}</div>
-          <button className="btn" type="submit">Add to the village</button>
+          <button className="btn" type="submit">{this.props.buttonText}</button>
         </form>
       </div>
     );
