@@ -20,6 +20,6 @@
 
 5.  Mention three tools we can use to make AJAX requests
 
-    - create our own Promise
+    - create our own Promise (async function that return a promise and handle calling resolve() or reject() actually)
     - use browser fetch API
     - use library called Axios
