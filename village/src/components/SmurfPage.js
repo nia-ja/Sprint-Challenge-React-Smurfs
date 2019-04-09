@@ -27,6 +27,7 @@ class SmurfPage extends Component {
     };
     deleteSmurf = () => {
         this.props.deleteSmurf(this.state.smurf.id);
+        this.props.history.push('/smurfs-list');
     }
     render(props) {
         const { name, height, age } = this.state.smurf;
@@ -35,7 +36,7 @@ class SmurfPage extends Component {
                <Smurf name={name}  height={height} age={age} />
                <div className='controls'>
                     <Link to={`/smurfs/${this.state.smurf.id}/edit`}><button className='btn'>Edit</button></Link>
-                    <Link to="/smurfs-list"><button className='btn' onClick={this.deleteSmurf}>Delete</button></Link>
+                    <button className='btn' onClick={this.deleteSmurf}>Delete</button>
                </div>
            </div>
        )

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomePage = props => {
+const HomePage = () => {
   return (
     <div className="home-page">
         <h2 className='home-header'>Welcome to the Smurf Village!</h2>

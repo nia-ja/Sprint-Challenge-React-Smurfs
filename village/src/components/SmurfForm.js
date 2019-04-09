@@ -47,12 +47,12 @@ class SmurfForm extends Component {
       age: this.state.age,
       height: this.state.height
     }
-    this._isMounted && this.props.addSmurf(newSmurf);
-    this._isMounted && this.setState({
+    this._isMounted && this.props.addSmurf(newSmurf);    this._isMounted && this.setState({
       name: '',
       age: '',
       height: ''
     });
+    this.props.history.push('/smurfs-list');
   }
   editSmurf = event => {
     event.preventDefault();
@@ -63,12 +63,13 @@ class SmurfForm extends Component {
           height: this.state.height
       }
       this._isMounted && this.props.editSmurf(myId, updatedSmurf);
+      this._isMounted && setTimeout(() => this.props.history.push('/smurfs-list'), 2000);
   }
   componentWillReceiveProps() {
     this._isMounted && this.setState({
       responseMessage: this.props.successMessage
     })
-    this._isMounted && setTimeout(() => this._isMounted && this.setState({responseMessage: ''}), 3000);
+    this._isMounted && setTimeout(() => this._isMounted && this.setState({responseMessage: ''}), 1000);
   }
   handleInputChange = e => {
     this._isMounted && this.setState({ [e.target.name]: e.target.value });
@@ -86,18 +87,21 @@ class SmurfForm extends Component {
             placeholder="name"
             value={this.state.name}
             name="name"
+            type="text"
           />
           <input
             onChange={this.handleInputChange}
             placeholder="age"
             value={this.state.age}
             name="age"
+            type="number"
           />
           <input
             onChange={this.handleInputChange}
             placeholder="height in cm"
             value={this.state.height}
             name="height"
+            type="number"
           />
           <div className='message'>{this.state.responseMessage}</div>
           <button className="btn" type="submit">{this.props.buttonText}</button>
