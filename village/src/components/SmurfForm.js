@@ -1,34 +1,86 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class SmurfForm extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       age: '',
-      height: ''
+      height: '',
+      responseMessage: '',
+      id: '',
+      onSubmit: ''
     };
-  }
 
+  }  
+  componentDidMount() {
+    this._isMounted = true;
+    if(this.props.action === 'edit') {
+      const id = Number(this.props.match.params.id);
+      this._isMounted && this.fetchSmurf(id);
+      this._isMounted && this.setState(() => ({ id: id }));
+    }
+  }
+  fetchSmurf = id => {
+    axios
+      .get(`http://localhost:3333/smurfs/${id}`)
+      .then(response => {
+        this._isMounted && this.setState(() => ({ name: response.data.name, age: response.data.age, height: response.data.height }));
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+  onSubmit = event => {
+    if(this.props.action === 'edit') {
+      this._isMounted && this.editSmurf(event); 
+    } else {
+      this._isMounted && this.addSmurf(event);
+    }
+  }
   addSmurf = event => {
     event.preventDefault();
-    // add code to create the smurf using the api
-
-    this.setState({
+    const newSmurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    }
+    this._isMounted && this.props.addSmurf(newSmurf);
+    this._isMounted && this.setState({
       name: '',
       age: '',
       height: ''
     });
   }
-
+  editSmurf = event => {
+    event.preventDefault();
+      const myId = Number(this.state.id);
+      const updatedSmurf = {
+          name: this.state.name,
+          age: Number(this.state.age),
+          height: this.state.height
+      }
+      this._isMounted && this.props.editSmurf(myId, updatedSmurf);
+  }
+  componentWillReceiveProps() {
+    this._isMounted && this.setState({
+      responseMessage: this.props.successMessage
+    })
+    this._isMounted && setTimeout(() => this._isMounted && this.setState({responseMessage: ''}), 3000);
+  }
   handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this._isMounted && this.setState({ [e.target.name]: e.target.value });
   };
-
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
   render() {
     return (
       <div className="SmurfForm">
-        <form onSubmit={this.addSmurf}>
+        <h3>{this.props.headerText}</h3>
+        <form onSubmit={this.onSubmit}>
           <input
             onChange={this.handleInputChange}
             placeholder="name"
@@ -43,11 +95,12 @@ class SmurfForm extends Component {
           />
           <input
             onChange={this.handleInputChange}
-            placeholder="height"
+            placeholder="height in cm"
             value={this.state.height}
             name="height"
           />
-          <button type="submit">Add to the village</button>
+          <div className='message'>{this.state.responseMessage}</div>
+          <button className="btn" type="submit">{this.props.buttonText}</button>
         </form>
       </div>
     );

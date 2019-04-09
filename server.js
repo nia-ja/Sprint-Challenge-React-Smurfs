@@ -18,13 +18,19 @@ let smurfs = [
     id: 0,
     name: 'Brainey Smurf',
     age: 200,
-    height: '8cm'
+    height: '8'
   }
 ];
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
 let smurfId = 1;
+
+//Makes possible to open Smurf card in separate page
+server.get('/smurfs/:id', (req, res) => {
+	const smurf = smurfs.filter(smurf => smurf.id.toString() === req.params.id)[0];
+	res.status(200).json(smurf);
+}); //<-- end of my changes
 
 server.post('/smurfs', (req, res) => {
   const { name, age, height } = req.body;
