@@ -35,7 +35,7 @@ class SmurfPage extends Component {
                <Smurf name={name}  height={height} age={age} />
                <div className='controls'>
                     <Link to={`/smurfs/${this.state.smurf.id}/edit`}><button className='btn'>Edit</button></Link>
-                    <Link to="/"><button className='btn' onClick={this.deleteSmurf}>Delete</button></Link>
+                    <Link to="/smurfs-list"><button className='btn' onClick={this.deleteSmurf}>Delete</button></Link>
                </div>
            </div>
        )

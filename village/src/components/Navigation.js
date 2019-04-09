@@ -8,7 +8,7 @@ const Navigation = () => {
         <Link to="/"><h1>Smurf<br />Village</h1></Link>
         <div className='links'>
           <button className='link'>
-            <NavLink exact to="/" activeClassName='activeNavButton'>Smurfs List</NavLink>
+            <NavLink exact to="/smurfs-list" activeClassName='activeNavButton'>Smurfs List</NavLink>
           </button>
           <button className='link'>
             <NavLink to="/smurf-form" activeClassName='activeNavButton'>Add Smurf</NavLink>

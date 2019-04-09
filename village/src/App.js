@@ -4,6 +4,8 @@ import { Route } from 'react-router-dom';
 
 import './App.css';
 import Smurfette from './img/smurfette.jpg';
+
+import HomePage from './components/HomePage';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
 import Navigation from './components/Navigation';
@@ -61,7 +63,9 @@ class App extends Component {
         
         <Navigation />
 
-        <Route exact path='/' render={(props) => <Smurfs {...props} smurfs={this.state.smurfs} />} />
+        <Route exact path="/" component={HomePage} />
+
+        <Route path='/smurfs-list' render={(props) => <Smurfs {...props} smurfs={this.state.smurfs} />} />
 
         <Route path='/smurf-form' render={(props) => <SmurfForm {...props} addSmurf={this.addSmurf} successMessage={this.state.SuccessMessage} headerText='Add Smurf' buttonText='Add to the village' action="add" /> } />
 
