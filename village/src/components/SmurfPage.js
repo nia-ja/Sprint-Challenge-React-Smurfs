@@ -27,7 +27,7 @@ class SmurfPage extends Component {
     };
     deleteSmurf = () => {
         this.props.deleteSmurf(this.state.smurf.id);
-        this.props.history.push('/smurfs-list');
+        setTimeout(() => this.props.history.push('/smurfs-list'), 300);
     }
     render(props) {
         const { name, height, age } = this.state.smurf;

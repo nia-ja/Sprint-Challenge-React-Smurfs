@@ -52,7 +52,7 @@ class SmurfForm extends Component {
       age: '',
       height: ''
     });
-    this.props.history.push('/smurfs-list');
+    this._isMounted && setTimeout(() => this.props.history.push('/smurfs-list'), 300);
   }
   editSmurf = event => {
     event.preventDefault();
@@ -63,13 +63,13 @@ class SmurfForm extends Component {
           height: this.state.height
       }
       this._isMounted && this.props.editSmurf(myId, updatedSmurf);
-      this._isMounted && setTimeout(() => this.props.history.push('/smurfs-list'), 2000);
+      this._isMounted && setTimeout(() => this.props.history.push('/smurfs-list'), 1000);
   }
   componentWillReceiveProps() {
     this._isMounted && this.setState({
       responseMessage: this.props.successMessage
     })
-    this._isMounted && setTimeout(() => this._isMounted && this.setState({responseMessage: ''}), 1000);
+    this._isMounted && setTimeout(() => this._isMounted && this.setState({responseMessage: ''}), 500);
   }
   handleInputChange = e => {
     this._isMounted && this.setState({ [e.target.name]: e.target.value });
